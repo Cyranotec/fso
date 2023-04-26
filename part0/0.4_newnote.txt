@@ -1,0 +1,31 @@
+Browser->Server: HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note
+note over Browser:
+including form user input
+end note
+note over Server:
+Server code responsable for POST handling
+creates a note object and returns it as part of POST
+along with redirection answer (return res.redirect('/notes'))
+end note
+Server->Browser: Ask browser to make a new GET Request to headers-location part (exampleapp/notes)
+note over Server:
+HTTP 302 (Redirection)
+end note
+Browser->Server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/notes
+Server->Browser: text/html 
+Browser->Server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.css
+Server->Browser: text/css main.css
+Browser->Server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.js
+Server->Browser: application/javascript main.js
+note over Browser:
+Browser executes js-code which
+requests data (/exampleapp/data.json")
+end note
+Browser->Server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/data.json
+Server->Browser: Array[content, date]
+note over Browser:
+The state of xhttp object changes (onreadystatechange event)
+and main.js callback function is executed by browser
+then creates an ul and insert it into div element identified by "notes"
+using DOM
+end note

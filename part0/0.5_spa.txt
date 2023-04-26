@@ -1,0 +1,18 @@
+title 0.5 SPA
+
+Browser->Server: HTTP GET spa
+Server->Browser: text/html
+Browser->Server: HTTP GET main.css
+Server->Browser: text/css
+Browser->Server: HTTP GET spa.js
+Server->Browser: application/javascript
+note over Browser
+Browser executes js code and
+requests JSON data from Server
+end note over
+Browser->Server: HTTP GET data.json
+Server->Browser: JSON Notes Array
+note over Browser
+Browser executes event handler
+that takes notes and adds it as a ul
+in <div id="notes"> element using DOM
